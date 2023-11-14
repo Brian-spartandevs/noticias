@@ -70,3 +70,29 @@ header buttom {
     transition: .3s;
 }
 
+.container-noticias .item:hover {
+    box-shadow: 0 0 10px #ccc;
+}
+
+.container-noticias .item:hover {
+    text-decoration: underline;
+}
+
+.container-noticias .item .info_item {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.container-noticias .item img {
+    width: 100%;
+
+}
+
+.container-noticias #btnSiguiente {
+    cursor: pointer;
+}
+
+.container-noticias #btnSiguiente:hover {
+    color: #fc0505;
+}
