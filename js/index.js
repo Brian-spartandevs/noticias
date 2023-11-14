@@ -86,7 +86,6 @@ function siguiente(){
     // elimino el boton siguiente
     document.querySelector("#btnSiguiente").remove();
     noticias.fetchNoticias(temaActual);
-    temaActual = tema;
 }
 
 noticias.fetchNoticias(temaActual);
