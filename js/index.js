@@ -1,4 +1,4 @@
-// cantidad de noticias que se cargarán cada vez que se presione siguiente
+// cantidad de noticias que se cargarán cada vez que se presione siguiente (5 + 1)
 let cantidadNoticias = 5; //se mostrarán 6
 let pageFinal = cantidadNoticias;
 let pageInicial = 0;
@@ -18,7 +18,12 @@ let noticias = {
         }
         // cargo la cantidad de noticias indicada en cantidadNoticias
         for( i = pageInicial; i <= pageFinal; i++ ){
-            const {title} = data.articles[i];
+
+            if( i >= data.articles.length ) {
+                break;
+            }
+
+            const { title } = data.articles[i];
             let h2 = document.createElement("h2");
             h2.textContent = title;
 
