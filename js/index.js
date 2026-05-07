@@ -5,12 +5,24 @@ let pageInicial = 0;
 let temaActual = 'Tecnología'
 
 let noticias = {
-    "apiKey":"95bfdd6c687842e3b88e4aa1c8410cb8",
     fetchNoticias: function(categoria){
-        const newsUrl = `https://newsapi.org/v2/everything?q=${categoria}&language=es&apiKey=${this.apiKey}`;
-        fetch(`https://api.allorigins.win/raw?url=${encodeURIComponent(newsUrl)}`)
-        .then((response)=> response.json())
-        .then((data)=>this.displayNoticias(data));
+        // Usa la función serverless de Vercel (sin CORS)
+        // En localhost: http://localhost:3000/api/noticias?categoria=X
+        // En Vercel: https://tu-dominio.vercel.app/api/noticias?categoria=X
+        const apiUrl = `/api/noticias?categoria=${encodeURIComponent(categoria)}`;
+        
+        fetch(apiUrl)
+        .then((response)=> {
+            if (!response.ok) {
+                throw new Error(`Error ${response.status}: ${response.statusText}`);
+            }
+            return response.json();
+        })
+        .then((data)=>this.displayNoticias(data))
+        .catch((error) => {
+            console.error('Error al obtener noticias:', error);
+            document.querySelector(".container-noticias").innerHTML = '<p style="grid-column: 1 / -1; text-align: center; padding: 40px; color: #ff0000;">Error al cargar noticias. Intenta más tarde.</p>';
+        });
     },
     displayNoticias: function(data){
         // elimino todo si se ha seleccionado un tema nuevo
