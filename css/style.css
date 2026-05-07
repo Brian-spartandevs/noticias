@@ -100,13 +100,35 @@ header button {
     box-shadow: 0 4px 15px rgba(252, 5, 5, 0.3);
 }
 
+header .btn-enter {
+    background: linear-gradient(135deg, #2c2c2c 0%, #1a1a1a 100%);
+    border: 2px solid #4a4a4a;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.95rem;
+    font-weight: 600;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3), inset 0 -3px 0 rgba(0, 0, 0, 0.3);
+    letter-spacing: 1px;
+}
+}
+
 header button:hover {
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(252, 5, 5, 0.4);
 }
 
-header button:active {
-    transform: translateY(0);
+header .btn-enter:hover {
+    background: linear-gradient(135deg, #3a3a3a 0%, #2a2a2a 100%);
+    border-color: #5a5a5a;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4), inset 0 -3px 0 rgba(0, 0, 0, 0.3);
+}
+
+header button:active,
+header .btn-enter:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3), inset 0 -1px 0 rgba(0, 0, 0, 0.3);
 }
 
 .container-noticias {
@@ -198,6 +220,23 @@ header button:active {
 .container-noticias #btnSiguiente:hover {
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(252, 5, 5, 0.4);
+}
+
+/* Animación suave de entrada para noticias */
+.container-noticias .item {
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 }
 
 .container-noticias #btnSiguiente:active {

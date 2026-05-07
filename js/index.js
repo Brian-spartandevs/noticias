@@ -6,6 +6,7 @@ let temaActual = 'Tecnología'
 
 let noticias = {
     fetchNoticias: function(categoria){
+        
         // Usa la función serverless de Vercel (sin CORS)
         // En localhost: http://localhost:3000/api/noticias?categoria=X
         // En Vercel: https://tu-dominio.vercel.app/api/noticias?categoria=X
@@ -78,7 +79,18 @@ let noticias = {
             item.appendChild(img)
             item.appendChild(info_item)
             item.setAttribute("onclick","window.open('" + url + "', '_blank')")
-            document.querySelector(".container-noticias").appendChild(item);
+            
+            // Agregar animación de entrada
+            setTimeout(() => {
+                item.style.opacity = '0';
+                item.style.transform = 'translateY(20px)';
+                document.querySelector(".container-noticias").appendChild(item);
+                setTimeout(() => {
+                    item.style.transition = 'all 0.5s ease';
+                    item.style.opacity = '1';
+                    item.style.transform = 'translateY(0)';
+                }, 10);
+            }, 0);
         }
 
         // agregamos el boton Ver más
@@ -116,5 +128,16 @@ function siguiente(){
     document.querySelector("#btnSiguiente").remove();
     noticias.fetchNoticias(temaActual);
 }
+
+// Agregar event listener al input para buscar con Enter
+document.addEventListener('DOMContentLoaded', function() {
+    const inputBusqueda = document.querySelector("#busqueda");
+    inputBusqueda.addEventListener('keypress', function(event) {
+        if (event.key === 'Enter') {
+            event.preventDefault();
+            buscarTema();
+        }
+    });
+});
 
 noticias.fetchNoticias(temaActual);
