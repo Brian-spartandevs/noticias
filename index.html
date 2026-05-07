@@ -3,29 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Noticias en tiempo real. Busca y consulta noticias por categorías: Tecnología, Programación, Deportes, Economía y Educación.">
+    <meta name="keywords" content="noticias, tecnología, programación, deportes, economía, educación, news">
+    <meta name="author" content="Noticias App">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="Spanish">
+    
+    <!-- Open Graph para redes sociales -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Noticias - Tu fuente de información actualizada">
+    <meta property="og:description" content="Mantente informado con las últimas noticias en tiempo real. Tecnología, Programación, Deportes, Economía y Educación.">
+    <meta property="og:url" content="">
+    <meta property="og:image" content="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23fc0505'/><text x='50' y='60' font-size='70' fill='white' text-anchor='middle' font-weight='bold'>📰</text></svg>">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Noticias - Tu fuente de información">
+    <meta name="twitter:description" content="Noticias en tiempo real sobre Tecnología, Programación, Deportes, Economía y Educación">
+    
+    <!-- Canonical -->
+    <link rel="canonical" href="">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23fc0505'/><text x='50' y='60' font-size='70' fill='white' text-anchor='middle' font-weight='bold'>📰</text></svg>">
+    
+    <!-- Structured Data JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "NewsMediaOrganization",
+        "name": "Noticias",
+        "url": "",
+        "logo": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23fc0505'/><text x='50' y='60' font-size='70' fill='white' text-anchor='middle' font-weight='bold'>📰</text></svg>",
+        "description": "Aplicación de noticias en tiempo real con múltiples categorías",
+        "sameAs": []
+    }
+    </script>
+    
     <link rel="stylesheet" href="css/style.css">
-    <title>Noticias</title>
+    <title>Noticias - Tu fuente de información actualizada | Tecnología, Deportes, Educación</title>
 </head>
 <body>
     <div class="container">
-        <h1>NOTICIAS</h1>
+        <h1>📰 NOTICIAS</h1>
         <header>
-            <nav>
-                <span class="cat" onclick="buscar('tecnología')">Tecnología</span>
-                <span class="cat" onclick="buscar('programación')">Programación</span>
-                <span class="cat" onclick="buscar('deportes')">Deportes</span>
-                <span class="cat" onclick="buscar('economía')">Economía</span>
-                <span class="cat" onclick="buscar('educación')">Educación</span>
+            <nav role="navigation" aria-label="Categorías de noticias">
+                <span class="cat" onclick="buscar('tecnología')" role="button" tabindex="0">Tecnología</span>
+                <span class="cat" onclick="buscar('programación')" role="button" tabindex="0">Programación</span>
+                <span class="cat" onclick="buscar('deportes')" role="button" tabindex="0">Deportes</span>
+                <span class="cat" onclick="buscar('economía')" role="button" tabindex="0">Economía</span>
+                <span class="cat" onclick="buscar('educación')" role="button" tabindex="0">Educación</span>
             </nav>
             <div class="busqueda">
-                <input type="text" placeholder="¿Qué deseas Buscar?" id="busqueda">
-                <button onclick="buscarTema()">Buscar</button>
+                <label for="busqueda" style="display: none;">Buscar noticias</label>
+                <input type="text" placeholder="¿Qué deseas buscar?" id="busqueda" aria-label="Buscar noticias">
+                <button onclick="buscarTema()" aria-label="Botón buscar">Buscar</button>
             </div>
         </header>
 
-        <div class="container-noticias">
+        <main role="main" class="container-noticias">
 
-        </div>
+        </main>
     </div>
     
     <script src="js/index.js"></script>

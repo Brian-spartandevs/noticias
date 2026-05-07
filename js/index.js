@@ -17,6 +17,13 @@ let noticias = {
         if( pageInicial == 0 ){
             document.querySelector(".container-noticias").textContent = "";
         }
+        
+        // verificar si hay artículos
+        if(!data.articles || data.articles.length === 0) {
+            document.querySelector(".container-noticias").innerHTML = '<p style="grid-column: 1 / -1; text-align: center; padding: 40px; color: #666;">No se encontraron noticias. Intenta con otra búsqueda.</p>';
+            return;
+        }
+        
         // cargo la cantidad de noticias indicada en cantidadNoticias
         for( i = pageInicial; i <= pageFinal; i++ ){
 
@@ -30,7 +37,8 @@ let noticias = {
 
             const { urlToImage } = data.articles[i];
             let img = document.createElement("img");
-            img.setAttribute("src", urlToImage);
+            img.setAttribute("src", urlToImage || 'https://via.placeholder.com/400x200?text=Sin+imagen');
+            img.setAttribute("alt", title);
 
             let info_item = document.createElement("div");
             info_item.className = "info_item"
@@ -53,10 +61,11 @@ let noticias = {
 
             let item = document.createElement("div")
             item.className = "item";
+            item.setAttribute("role", "article");
             item.appendChild(h2)
             item.appendChild(img)
             item.appendChild(info_item)
-            item.setAttribute("onclick","location.href='" + url + "'")
+            item.setAttribute("onclick","window.open('" + url + "', '_blank')")
             document.querySelector(".container-noticias").appendChild(item);
         }
 
@@ -65,6 +74,8 @@ let noticias = {
         btnSiguiente.id = "btnSiguiente";
         btnSiguiente.textContent = "Ver más";
         btnSiguiente.setAttribute("onclick", "siguiente()");
+        btnSiguiente.setAttribute("role", "button");
+        btnSiguiente.setAttribute("tabindex", "0");
         document.querySelector(".container-noticias").appendChild(btnSiguiente);
     }
 }
