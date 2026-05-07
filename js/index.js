@@ -93,14 +93,23 @@ let noticias = {
             }, 0);
         }
 
-        // agregamos el boton Ver más
-        let btnSiguiente = document.createElement("span");
-        btnSiguiente.id = "btnSiguiente";
-        btnSiguiente.textContent = "Ver más";
-        btnSiguiente.setAttribute("onclick", "siguiente()");
-        btnSiguiente.setAttribute("role", "button");
-        btnSiguiente.setAttribute("tabindex", "0");
-        document.querySelector(".container-noticias").appendChild(btnSiguiente);
+        // agregamos el boton Ver más solo si hay más noticias
+        // eliminar botón existente si lo hay
+        const btnExistente = document.querySelector("#btnSiguiente");
+        if (btnExistente) {
+            btnExistente.remove();
+        }
+        
+        // solo agregar el botón si hay más artículos disponibles
+        if (pageFinal < data.articles.length - 1) {
+            let btnSiguiente = document.createElement("span");
+            btnSiguiente.id = "btnSiguiente";
+            btnSiguiente.textContent = "Ver más";
+            btnSiguiente.setAttribute("onclick", "siguiente()");
+            btnSiguiente.setAttribute("role", "button");
+            btnSiguiente.setAttribute("tabindex", "0");
+            document.querySelector(".container-noticias").appendChild(btnSiguiente);
+        }
     }
 }
 
@@ -124,8 +133,6 @@ function buscarTema(){
 function siguiente(){
     pageInicial = pageFinal + 1;
     pageFinal = pageFinal + cantidadNoticias + 1;
-    // elimino el boton siguiente
-    document.querySelector("#btnSiguiente").remove();
     noticias.fetchNoticias(temaActual);
 }
 

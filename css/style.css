@@ -111,7 +111,6 @@ header .btn-enter {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3), inset 0 -3px 0 rgba(0, 0, 0, 0.3);
     letter-spacing: 1px;
 }
-}
 
 header button:hover {
     transform: translateY(-2px);
@@ -236,7 +235,6 @@ header .btn-enter:active {
         opacity: 1;
         transform: translateY(0);
     }
-}
 }
 
 .container-noticias #btnSiguiente:active {
