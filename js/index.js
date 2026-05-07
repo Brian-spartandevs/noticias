@@ -7,7 +7,8 @@ let temaActual = 'Tecnología'
 let noticias = {
     "apiKey":"95bfdd6c687842e3b88e4aa1c8410cb8",
     fetchNoticias: function(categoria){
-        fetch(`https://newsapi.org/v2/everything?q=${categoria}&language=es&apiKey=${this.apiKey}`)
+        const newsUrl = `https://newsapi.org/v2/everything?q=${categoria}&language=es&apiKey=${this.apiKey}`;
+        fetch(`https://api.allorigins.win/raw?url=${encodeURIComponent(newsUrl)}`)
         .then((response)=> response.json())
         .then((data)=>this.displayNoticias(data));
     },
