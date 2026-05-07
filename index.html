@@ -40,31 +40,116 @@
     }
     </script>
     
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <title>Noticias - Tu fuente de información actualizada | Tecnología, Deportes, Educación</title>
 </head>
 <body>
-    <div class="container">
-        <h1>📰 NOTICIAS</h1>
-        <header>
-            <nav role="navigation" aria-label="Categorías de noticias">
-                <span class="cat" onclick="buscar('tecnología')" role="button" tabindex="0">Tecnología</span>
-                <span class="cat" onclick="buscar('programación')" role="button" tabindex="0">Programación</span>
-                <span class="cat" onclick="buscar('deportes')" role="button" tabindex="0">Deportes</span>
-                <span class="cat" onclick="buscar('economía')" role="button" tabindex="0">Economía</span>
-                <span class="cat" onclick="buscar('educación')" role="button" tabindex="0">Educación</span>
-            </nav>
-            <div class="busqueda">
-                <label for="busqueda" style="display: none;">Buscar noticias</label>
-                <input type="text" placeholder="¿Qué deseas buscar?" id="busqueda" aria-label="Buscar noticias">
-                <button onclick="buscarTema()" class="btn-enter" aria-label="Presionar Enter">↵ Enter</button>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="top-bar-content">
+            <div class="top-left">
+                <span id="current-date"></span>
             </div>
-        </header>
-
-        <main role="main" class="container-noticias">
-
-        </main>
+            <div class="top-right">
+                <a href="#" class="top-link">Blog</a>
+                <a href="#" class="top-link">Forum</a>
+                <span class="top-link">Buy now!</span>
+                <div class="top-social">
+                    <a href="#" aria-label="Facebook">f</a>
+                    <a href="#" aria-label="Instagram">📷</a>
+                    <a href="#" aria-label="Twitter">🐦</a>
+                    <a href="#" aria-label="YouTube">▶</a>
+                </div>
+            </div>
+        </div>
     </div>
+
+    <!-- Header -->
+    <header class="main-header">
+        <div class="header-content">
+            <div class="logo">
+                <span class="logo-text">NEWS</span><span class="logo-x">X</span><span class="logo-text">PAPER</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="nav-content">
+            <span class="nav-item active" onclick="buscar('tecnología')" role="button" tabindex="0">TECNOLOGÍA</span>
+            <span class="nav-item" onclick="buscar('programación')" role="button" tabindex="0">PROGRAMACIÓN</span>
+            <span class="nav-item" onclick="buscar('deportes')" role="button" tabindex="0">DEPORTES</span>
+            <span class="nav-item" onclick="buscar('economía')" role="button" tabindex="0">ECONOMÍA</span>
+            <span class="nav-item" onclick="buscar('educación')" role="button" tabindex="0">EDUCACIÓN</span>
+            <div class="nav-search">
+                <input type="text" placeholder="Buscar..." id="busqueda" aria-label="Buscar noticias">
+                <button onclick="buscarTema()" aria-label="Buscar">🔍</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Trending Bar -->
+    <div class="trending-bar">
+        <div class="trending-content">
+            <span class="trending-label">TRENDING NOW</span>
+            <span class="trending-text" id="trending-text">Últimas noticias actualizadas en tiempo real</span>
+        </div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="site-container">
+        <!-- Hero Section -->
+        <div id="hero-section" class="hero-section"></div>
+
+        <!-- Main Content Area -->
+        <div class="content-wrapper">
+            <!-- Main Content -->
+            <main role="main" class="main-content">
+                <div class="section-header">
+                    <h2 class="section-title">ÚLTIMAS NOTICIAS</h2>
+                </div>
+                <div class="container-noticias"></div>
+            </main>
+
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <div class="widget social-widget">
+                    <h3 class="widget-title">MANTENTE CONECTADO</h3>
+                    <div class="social-buttons">
+                        <a href="#" class="social-btn facebook">
+                            <span class="social-icon">f</span>
+                            <div class="social-info">
+                                <strong>17,329</strong> Fans
+                                <span class="social-action">Like</span>
+                            </div>
+                        </a>
+                        <a href="#" class="social-btn twitter">
+                            <span class="social-icon">🐦</span>
+                            <div class="social-info">
+                                <strong>1,785</strong> Followers
+                                <span class="social-action">Follow</span>
+                            </div>
+                        </a>
+                        <a href="#" class="social-btn youtube">
+                            <span class="social-icon">▶</span>
+                            <div class="social-info">
+                                <strong>15,440</strong> Subscribers
+                                <span class="social-action">Subscribe</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <p>&copy; 2026 NewsXPaper. Todos los derechos reservados.</p>
+    </footer>
     
     <script src="js/index.js"></script>
 </body>
