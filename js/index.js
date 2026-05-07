@@ -37,12 +37,24 @@ let noticias = {
             return;
         }
         
+        // eliminar botón existente si lo hay
+        const btnExistente = document.querySelector("#btnSiguiente");
+        if (btnExistente) {
+            btnExistente.remove();
+        }
+        
+        const container = document.querySelector(".container-noticias");
+        let noticiasAgregadas = 0;
+        let totalNoticias = 0;
+        
         // cargo la cantidad de noticias indicada en cantidadNoticias
         for( i = pageInicial; i <= pageFinal; i++ ){
 
             if( i >= data.articles.length ) {
                 break;
             }
+            
+            totalNoticias++;
 
             const { title } = data.articles[i];
             let h2 = document.createElement("h2");
@@ -80,26 +92,13 @@ let noticias = {
             item.appendChild(info_item)
             item.setAttribute("onclick","window.open('" + url + "', '_blank')")
             
-            // Agregar animación de entrada
-            setTimeout(() => {
-                item.style.opacity = '0';
-                item.style.transform = 'translateY(20px)';
-                document.querySelector(".container-noticias").appendChild(item);
-                setTimeout(() => {
-                    item.style.transition = 'all 0.5s ease';
-                    item.style.opacity = '1';
-                    item.style.transform = 'translateY(0)';
-                }, 10);
-            }, 0);
+            // Agregar al DOM - la animación CSS (fadeInUp) se aplicará automáticamente
+            container.appendChild(item);
+            
+            noticiasAgregadas++;
         }
 
-        // agregamos el boton Ver más solo si hay más noticias
-        // eliminar botón existente si lo hay
-        const btnExistente = document.querySelector("#btnSiguiente");
-        if (btnExistente) {
-            btnExistente.remove();
-        }
-        
+        // Agregar el botón después de que todas las noticias estén en el DOM
         // solo agregar el botón si hay más artículos disponibles
         if (pageFinal < data.articles.length - 1) {
             let btnSiguiente = document.createElement("span");
@@ -108,7 +107,7 @@ let noticias = {
             btnSiguiente.setAttribute("onclick", "siguiente()");
             btnSiguiente.setAttribute("role", "button");
             btnSiguiente.setAttribute("tabindex", "0");
-            document.querySelector(".container-noticias").appendChild(btnSiguiente);
+            container.appendChild(btnSiguiente);
         }
     }
 }
